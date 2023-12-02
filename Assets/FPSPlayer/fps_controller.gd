@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+# Base Character Variables
 @export var SPEED : float = 5.0
 @export var JUMP_VELOCITY : float = 4.5
 
@@ -16,42 +16,50 @@ var _tilt_input : float
 var _player_rotation : Vector3
 var _camera_rotation : Vector3
 
+# Game Specific Variables
+@onready var water_droplet = preload("res://Models/water_drop.tscn")
+@export var watering_can_muzzle : Node3D
+@onready var camera_ray = $CameraController/Camera3D/RayCast3D
+@export var root : Node3D
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _input(event):
 	if event.is_action_pressed("debug_exit"):
 		get_tree().quit()
-		
+
 func _unhandled_input(event):
-	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED 
-	if _mouse_input: 
+	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+	if _mouse_input:
 		_rotation_input = -event.relative.x  * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
 		# print(Vector2(_rotation_input,_tilt_input))
-		
+
 func _update_camera(delta):
-	
+
 	# Rotate camera using euler rotation
 	_mouse_rotation.x += _tilt_input * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
 	_mouse_rotation.y += _rotation_input * delta
-	
+
 	_player_rotation = Vector3(0.0, _mouse_rotation.y, 0.0)
 	_camera_rotation = Vector3(_mouse_rotation.x, 0.0, 0.0)
-	
+
 	CAMERA_CONTROLLER.transform.basis = Basis.from_euler(_camera_rotation)
 	CAMERA_CONTROLLER.rotation.z = 0.0
-	
+
 	global_transform.basis = Basis.from_euler(_player_rotation)
-	
+
 	_rotation_input = 0.0
 	_tilt_input = 0.0
-		
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
+	print(camera_ray.get_collision_point())
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -74,3 +82,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+	if Input.is_action_pressed("water_plant"):
+		var water = water_droplet.instantiate()
+		watering_can_muzzle.add_child(water)
+		water
+		water.water_stuff()

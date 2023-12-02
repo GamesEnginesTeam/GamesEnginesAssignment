@@ -7,15 +7,9 @@ var waterDroplet = Node3D
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_area_3d_body_entered(body):
 	if body.name != "StaticBody3D":
-		if body.name == "waterDroplet":
+		if body.name == "WaterDrop":
 			print("A water droplet has hit the ground!")
 
 		if body.name == "player":

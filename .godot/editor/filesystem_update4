@@ -6,3 +6,6 @@ res://Assets/FPSPlayer/FPSPlayer.tscn
 res://Models/WateringCan.tscn
 res://MainGame.gd
 res://Assets/FPSPlayer/fps_controller.gd
+res://Models/water_drop.tscn
+res://Meshes/WaterDropMesh.res
+res://Models/water_drop.gd
