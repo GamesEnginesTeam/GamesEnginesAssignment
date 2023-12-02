@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccpp2welka0kd"]
+
+[ext_resource type="Script" path="res://Assets/FPSPlayer/fps_controller.gd" id="1_8nref"]
+[ext_resource type="PackedScene" uid="uid://be025wg6tefx6" path="res://Models/WateringCan.tscn" id="2_7px0a"]
+[ext_resource type="Material" uid="uid://bcspi8wfd1oy5" path="res://Assets/FPSPlayer/Base_Cel_Material.tres" id="2_t3dnl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dgwvp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fjwj7"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+script = ExtResource("1_8nref")
+CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_dgwvp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_fjwj7")
+surface_material_override/0 = ExtResource("2_t3dnl")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 0.5, 2.08165e-12)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.55)
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
+update_mode = 1
+
+[node name="Sketchfab_Scene" parent="CameraController/Camera3D" instance=ExtResource("2_7px0a")]
+transform = Transform3D(-0.05, 1.74393e-17, -7.54979e-09, 1.74393e-17, 0.05, -1.74393e-17, 7.54979e-09, -1.74393e-17, -0.05, 0.231919, -0.130968, -0.105657)

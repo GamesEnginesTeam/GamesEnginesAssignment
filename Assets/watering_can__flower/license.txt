@@ -1,0 +1,11 @@
+Model Information:
+* title:	Watering Can & Flower
+* source:	https://sketchfab.com/3d-models/watering-can-flower-7d308a39fc994824a42975ac7a711201
+* author:	okamerin (https://sketchfab.com/okamerin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Watering Can & Flower" (https://sketchfab.com/3d-models/watering-can-flower-7d308a39fc994824a42975ac7a711201) by okamerin (https://sketchfab.com/okamerin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

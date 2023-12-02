@@ -1,0 +1,8 @@
+CollisionShape3D
+Area3D
+MultiMeshInstance3D
+StaticBody3D
+MeshInstance3D
+CSGBox3D
+DirectionalLight3D
+WorldEnvironment

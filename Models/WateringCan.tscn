@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://be025wg6tefx6"]
+
+[ext_resource type="PackedScene" uid="uid://0nxrbndodda6" path="res://Assets/watering_can__flower/scene.gltf" id="1_0l4jy"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_0l4jy")]

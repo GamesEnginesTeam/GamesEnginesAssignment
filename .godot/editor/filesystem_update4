@@ -1,0 +1,6 @@
+res://MainGame.tscn
+res://Assets/FPSPlayer/Base_Cel_Material.tres
+res://Models/grass.tscn
+res://Meshes/GrassMesh.res
+res://Assets/FPSPlayer/FPSPlayer.tscn
+res://Models/WateringCan.tscn
