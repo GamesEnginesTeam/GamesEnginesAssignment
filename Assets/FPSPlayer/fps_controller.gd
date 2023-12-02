@@ -58,7 +58,6 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
-	print(camera_ray.get_collision_point())
 	
 	# Add the gravity.
 	if not is_on_floor():

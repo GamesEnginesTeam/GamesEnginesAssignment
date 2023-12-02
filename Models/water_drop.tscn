@@ -23,10 +23,10 @@ mesh = ExtResource("1_je6ay")
 [node name="WaterCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ome1c")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="WaterArea" type="Area3D" parent="."]
 
-[node name="AreaCollision" type="CollisionShape3D" parent="Area3D"]
+[node name="AreaCollision" type="CollisionShape3D" parent="WaterArea"]
 shape = SubResource("SphereShape3D_1qpki")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="WaterArea" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="WaterArea" to="." method="_on_area_3d_body_entered"]

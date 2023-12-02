@@ -9,10 +9,10 @@ func _ready():
 
 func _on_area_3d_body_entered(body):
 	if body.name != "StaticBody3D":
-		if body.name == "WaterDrop":
-			print("A water droplet has hit the ground!")
+		if body.name == "Water":
+			#print("A water droplet has hit the ground!")
+			#body.queue_free()
+			pass
 
 		if body.name == "player":
 			print("The player has hit the ground!")
-
-		print("the object that hit the ground is: ", body.name)

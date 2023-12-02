@@ -61,10 +61,10 @@ shape = SubResource("BoxShape3D_8xaeh")
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0.365917, 0)
 mesh = SubResource("PlaneMesh_vcf8d")
 
-[node name="Area3D" type="Area3D" parent="Ground"]
+[node name="GroundArea" type="Area3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/GroundArea"]
 shape = SubResource("BoxShape3D_myh0s")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -86,4 +86,4 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_tdtin")
 
-[connection signal="body_entered" from="Ground/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Ground/GroundArea" to="." method="_on_area_3d_body_entered"]
