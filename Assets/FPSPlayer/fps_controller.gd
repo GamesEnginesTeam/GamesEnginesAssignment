@@ -28,7 +28,7 @@ func _unhandled_input(event):
 	if _mouse_input: 
 		_rotation_input = -event.relative.x  * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
-		print(Vector2(_rotation_input,_tilt_input))
+		# print(Vector2(_rotation_input,_tilt_input))
 		
 func _update_camera(delta):
 	

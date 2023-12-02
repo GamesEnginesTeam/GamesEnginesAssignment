@@ -4,3 +4,5 @@ res://Models/grass.tscn
 res://Meshes/GrassMesh.res
 res://Assets/FPSPlayer/FPSPlayer.tscn
 res://Models/WateringCan.tscn
+res://MainGame.gd
+res://Assets/FPSPlayer/fps_controller.gd
