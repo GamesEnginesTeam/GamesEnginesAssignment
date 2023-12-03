@@ -84,6 +84,6 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("water_plant"):
 		var water = water_droplet.instantiate()
-		watering_can_muzzle.add_child(water)
-		water
+		add_child(water)
+		water.transform = watering_can_muzzle.global_transform
 		water.water_stuff()

@@ -1,11 +1,10 @@
-res://MainGame.tscn
+res://Assets/FPSPlayer/FPSPlayer.tscn
 res://Meshes/WaterDropMesh.res
 res://Assets/FPSPlayer/Base_Cel_Material.tres
 res://Meshes/GrassMesh.res
-res://Assets/FPSPlayer/FPSPlayer.tscn
+res://Assets/FPSPlayer/fps_controller.gd
+res://Models/water_drop.tscn
+res://Models/water_drop.gd
+res://MainGame.tscn
 res://Models/WateringCan.tscn
 res://Models/grass.tscn
-res://Models/water_drop.tscn
-res://MainGame.gd
-res://Assets/FPSPlayer/fps_controller.gd
-res://Models/water_drop.gd

@@ -4,24 +4,26 @@
 [ext_resource type="ArrayMesh" uid="uid://cr6nui4ku6by7" path="res://Meshes/WaterDropMesh.res" id="1_je6ay"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ome1c"]
-radius = 0.05
+radius = 0.04
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1qpki"]
-radius = 0.1
+radius = 0.04
 
 [node name="Water" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 0.1
+gravity_scale = 0.5
 script = ExtResource("1_a8vxg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0)
 mesh = ExtResource("1_je6ay")
 
 [node name="WaterCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ome1c")
+disabled = true
 
 [node name="WaterArea" type="Area3D" parent="."]
 
@@ -29,4 +31,4 @@ shape = SubResource("SphereShape3D_ome1c")
 shape = SubResource("SphereShape3D_1qpki")
 
 [connection signal="area_entered" from="WaterArea" to="." method="_on_area_3d_area_entered"]
-[connection signal="body_entered" from="WaterArea" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="WaterArea" to="." method="_on_water_area_body_entered"]
