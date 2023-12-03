@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbkaq8xethgxt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vr200"]
+size = Vector3(0.1, 0.1, 0.5)
+
+[node name="Seeds" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231919, -0.130968, -0.105657)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vr200")
+
+[node name="SeedGunMuzzle" type="Node3D" parent="."]
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, -0.250389)

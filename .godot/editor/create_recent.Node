@@ -1,11 +1,11 @@
 Node3D
-RayCast3D
-CollisionShape3D
-Area3D
 MeshInstance3D
+StaticBody3D
+CollisionShape3D
+RayCast3D
+Area3D
 RigidBody3D
 MultiMeshInstance3D
-StaticBody3D
 CSGBox3D
 DirectionalLight3D
 WorldEnvironment

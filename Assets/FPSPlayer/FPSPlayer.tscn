@@ -1,18 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccpp2welka0kd"]
 
 [ext_resource type="Script" path="res://Assets/FPSPlayer/fps_controller.gd" id="1_8nref"]
-[ext_resource type="PackedScene" uid="uid://be025wg6tefx6" path="res://Models/WateringCan.tscn" id="2_7px0a"]
 [ext_resource type="Material" uid="uid://bcspi8wfd1oy5" path="res://Assets/FPSPlayer/Base_Cel_Material.tres" id="2_t3dnl"]
+[ext_resource type="PackedScene" uid="uid://be025wg6tefx6" path="res://Models/WateringCan.tscn" id="3_nlq2l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dgwvp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fjwj7"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "watering_can_muzzle")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "player_camera", "tool_placement")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 script = ExtResource("1_8nref")
 CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
-watering_can_muzzle = NodePath("CameraController/Camera3D/WateringCan/WateringCanMuzzle")
+player_camera = NodePath("CameraController/Camera3D")
+tool_placement = NodePath("CameraController/Camera3D/ToolPlacement")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_dgwvp")
@@ -30,12 +31,12 @@ transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 2.08165
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
 update_mode = 1
 
-[node name="WateringCan" parent="CameraController/Camera3D" instance=ExtResource("2_7px0a")]
-transform = Transform3D(-0.05, 1.74393e-17, -7.54979e-09, 1.74393e-17, 0.05, -1.74393e-17, 7.54979e-09, -1.74393e-17, -0.05, 0.231919, -0.130968, -0.105657)
-
-[node name="WateringCanMuzzle" type="Node3D" parent="CameraController/Camera3D/WateringCan"]
-transform = Transform3D(-1, 3.48786e-16, 1.50996e-07, 3.48786e-16, 1, -3.48786e-16, -1.50996e-07, -3.48786e-16, -1, 0.601489, 2.8907, 2.89933)
-
 [node name="RayCast3D" type="RayCast3D" parent="CameraController/Camera3D"]
 transform = Transform3D(1, 0, -3.76936e-23, -2.64698e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(2.08165e-12, -2, 2.08165e-12)
+
+[node name="ToolPlacement" type="Node3D" parent="CameraController/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231919, -0.130968, -0.105657)
+
+[node name="WateringCan" parent="CameraController/Camera3D" instance=ExtResource("3_nlq2l")]
+transform = Transform3D(-0.2, 6.97574e-17, 3.01992e-08, 6.97574e-17, 0.2, -6.97574e-17, -3.01992e-08, -6.97574e-17, -0.2, 0.597776, -0.644208, 0.0552181)

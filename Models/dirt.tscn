@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfhasauklniru"]
+
+[ext_resource type="ArrayMesh" uid="uid://blma1hw0kkdye" path="res://Meshes/DirtMoundMesh.res" id="1_djjna"]
+
+[sub_resource type="Gradient" id="Gradient_x85ob"]
+colors = PackedColorArray(0.286684, 0.286684, 0.286684, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eot8j"]
+noise_type = 3
+frequency = 0.0869
+fractal_lacunarity = 1.0
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ief6p"]
+color_ramp = SubResource("Gradient_x85ob")
+noise = SubResource("FastNoiseLite_eot8j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xts2"]
+cull_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0
+grow = true
+grow_amount = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u7lv"]
+next_pass = SubResource("StandardMaterial3D_8xts2")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.666667, 0.321569, 0.0784314, 1)
+albedo_texture = SubResource("NoiseTexture2D_ief6p")
+roughness = 0.0
+refraction_enabled = true
+refraction_scale = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qul1p"]
+radius = 1.0
+
+[node name="Dirt" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_djjna")
+skeleton = NodePath("../StaticBody3D/CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_2u7lv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_qul1p")

@@ -17,10 +17,16 @@ var _player_rotation : Vector3
 var _camera_rotation : Vector3
 
 # Game Specific Variables
-@onready var water_droplet = preload("res://Models/water_drop.tscn")
-@export var watering_can_muzzle : Node3D
+@export var watering_can = preload("res://Models/WateringCan.tscn").instantiate()
+@export var seeds = preload("res://Models/seeds.tscn").instantiate()
+@export var player_camera = Camera3D
 @onready var camera_ray = $CameraController/Camera3D/RayCast3D
+@export var tool_placement = Node3D
 @export var root : Node3D
+
+# List of Tools for the player to use
+enum tool {SEEDS=1, CAN=2}
+var tool_picker = 2
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -55,6 +61,8 @@ func _update_camera(delta):
 	_tilt_input = 0.0
 
 func _ready():
+	watering_can.global_position = tool_placement.global_position
+	seeds.global_position = tool_placement.global_position
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
@@ -81,9 +89,23 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("switch_items"):
+		switch_tool()
+	
+func switch_tool():
+	# tool_picker + 1
+	# if (tool_picker > 2):
+	#	tool_picker = 1
+	match tool_picker:
+		tool.SEEDS:
+			print("SWITCHING FROM SEEDS")
+			watering_can.hide()
+			seeds.show()
+			tool_picker = 2
+		tool.CAN:
+			print("SWITCHING FROM CAN")
+			seeds.hide()
+			watering_can.show()
+			tool_picker = 1
 
-	if Input.is_action_pressed("water_plant"):
-		var water = water_droplet.instantiate()
-		add_child(water)
-		water.transform = watering_can_muzzle.global_transform
-		water.water_stuff()

@@ -10,7 +10,7 @@ func _ready():
 	set_as_top_level(true)
 	pass # Replace with function body.
 
-func water_stuff():
+func water_shot():
 	linear_velocity = (-transform.basis.z * Water_Speed * water_Recoil_Z) + (transform.basis.x * water_Recoil_X)
 
 func _on_area_3d_area_entered(area):
