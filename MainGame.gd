@@ -12,12 +12,14 @@ func _ready():
 
 # This is the Ground 
 func _on_area_3d_body_entered(body):
-	if body.name != "StaticBody3D":
-		if body.name == "Water":
-			flower.instantiate()
-			groundMoistureCounter = groundMoistureCounter + 1
-			print(groundMoistureCounter)
-			pass
+	print(body.name)
+	
+	if body.name == "Water":
+		# flower.instantiate()
+		groundMoistureCounter = groundMoistureCounter + 1
+		print(groundMoistureCounter)
+		pass
 
-		if body.name == "player":
-			print("The player has hit the ground!")
+	if body.name == "Player":
+		print("The player has hit the ground!")
+		pass

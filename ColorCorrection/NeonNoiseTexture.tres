@@ -1,0 +1,12 @@
+[gd_resource type="NoiseTexture3D" load_steps=3 format=3 uid="uid://ctqehagu3jn7k"]
+
+[sub_resource type="Gradient" id="Gradient_bjwua"]
+offsets = PackedFloat32Array(0, 0.190299, 0.324627, 0.462687, 0.585821, 0.697761, 0.820895, 0.910448, 1)
+colors = PackedColorArray(0, 0.552941, 0, 1, 0.35315, 0.257365, 0.898388, 1, 0.32549, 0.698039, 0.933333, 1, 0.248084, 0.776259, 0.852561, 1, 0.93538, 0.756822, 0.277956, 1, 0.952941, 0.462745, 0.956863, 1, 0.972549, 0.137255, 0.686275, 1, 0.615686, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eboxi"]
+frequency = 0.0001
+
+[resource]
+color_ramp = SubResource("Gradient_bjwua")
+noise = SubResource("FastNoiseLite_eboxi")

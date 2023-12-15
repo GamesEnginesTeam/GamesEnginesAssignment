@@ -64,8 +64,8 @@ func _update_camera(delta):
 	_tilt_input = 0.0
 
 func _ready():
-	watering_can.global_position = tool_placement.global_position
-	seed_gun.global_position = tool_placement.global_position
+	#watering_can.global_position = tool_placement.global_position
+	#seed_gun.global_position = tool_placement.global_position
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):

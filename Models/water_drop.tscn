@@ -7,14 +7,18 @@
 radius = 0.04
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1qpki"]
-radius = 0.04
+margin = 0.08
+radius = 0.08
 
 [node name="Water" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 3
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 0.1
 gravity_scale = 0.5
+lock_rotation = true
 script = ExtResource("1_a8vxg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -23,7 +27,6 @@ mesh = ExtResource("1_je6ay")
 
 [node name="WaterCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ome1c")
-disabled = true
 
 [node name="WaterArea" type="Area3D" parent="."]
 

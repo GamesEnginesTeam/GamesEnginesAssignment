@@ -65,6 +65,14 @@ switch_items={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Area"
+3d_physics/layer_2="Ground"
+3d_physics/layer_3="Player"
+3d_physics/layer_4="Bullet"
+3d_physics/layer_5="Particles"
+
 [rendering]
 
 renderer/rendering_method="mobile"
