@@ -47,8 +47,9 @@ buffer = PackedFloat32Array(0.164665, -0.363172, -0.956724, 9.40176, 0.297421, 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_myh0s"]
 size = Vector3(20, 1.5, 20)
 
-[node name="Root" type="Node3D"]
+[node name="Root" type="Node3D" node_paths=PackedStringArray("flowerSpawnPoint")]
 script = ExtResource("1_1738d")
+flowerSpawnPoint = NodePath("FlowerSpawnPoint")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_nvo03")
@@ -97,6 +98,9 @@ collision_mask = 31
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.83229, 2.08165e-12)
 shape = SubResource("BoxShape3D_myh0s")
+
+[node name="FlowerSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.08165e-12, 2.2, 2.08165e-12)
 
 [connection signal="body_entered" from="GroundArea" to="." method="_on_area_3d_body_entered"]
 
