@@ -18,15 +18,18 @@ var _camera_rotation : Vector3
 
 # Game Specific Variables
 @export var watering_can = preload("res://Models/WateringCan.tscn").instantiate()
-@export var seeds = preload("res://Models/seeds.tscn").instantiate()
+@export var seed_gun = preload("res://Models/seedGun.tscn").instantiate()
 @export var player_camera = Camera3D
 @onready var camera_ray = $CameraController/Camera3D/RayCast3D
 @export var tool_placement = Node3D
 @export var root : Node3D
 
 # List of Tools for the player to use
-enum tool {SEEDS=1, CAN=2}
-var tool_picker = 2
+enum tools {
+	GUN, 
+	CAN
+}
+var tool = tools.GUN
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -62,7 +65,7 @@ func _update_camera(delta):
 
 func _ready():
 	watering_can.global_position = tool_placement.global_position
-	seeds.global_position = tool_placement.global_position
+	seed_gun.global_position = tool_placement.global_position
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
@@ -71,6 +74,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	# Rotate the camera
 	_update_camera(delta)
 
 	# Handle Jump.
@@ -87,9 +91,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
 	move_and_slide()
 	
+	# Tool Switching
 	if Input.is_action_just_pressed("switch_items"):
 		switch_tool()
 	
@@ -97,15 +101,14 @@ func switch_tool():
 	# tool_picker + 1
 	# if (tool_picker > 2):
 	#	tool_picker = 1
-	match tool_picker:
-		tool.SEEDS:
-			print("SWITCHING FROM SEEDS")
-			watering_can.hide()
-			seeds.show()
-			tool_picker = 2
-		tool.CAN:
-			print("SWITCHING FROM CAN")
-			seeds.hide()
+	match tool:
+		tools.GUN:
+			print("SWITCHING FROM GUN")
+			tool = tools.CAN
+			seed_gun.hide()
 			watering_can.show()
-			tool_picker = 1
-
+		tools.CAN:
+			print("SWITCHING FROM CAN")
+			tool = tools.GUN
+			watering_can.hide()
+			seed_gun.show()

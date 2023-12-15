@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgife2yexffn5"]
+
+[ext_resource type="Script" path="res://Models/water_drop.gd" id="1_ah1s6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pydk6"]
+
+[sub_resource type="Gradient" id="Gradient_ya7n7"]
+colors = PackedColorArray(0.211765, 0.164706, 0.12549, 1, 0.78628, 0.690521, 0.614191, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_flnjr"]
+gradient = SubResource("Gradient_ya7n7")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_shkcc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vk2kl"]
+noise = SubResource("FastNoiseLite_shkcc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4addw"]
+albedo_color = Color(0.458824, 0.25098, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_flnjr")
+roughness_texture = SubResource("NoiseTexture2D_vk2kl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t5mp"]
+next_pass = SubResource("StandardMaterial3D_4addw")
+albedo_color = Color(0.203922, 0.164706, 0.105882, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ome1c"]
+radius = 0.03
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1qpki"]
+radius = 0.04
+
+[node name="Seed" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.1
+gravity_scale = 0.5
+script = ExtResource("1_ah1s6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0)
+mesh = SubResource("SphereMesh_pydk6")
+surface_material_override/0 = SubResource("StandardMaterial3D_8t5mp")
+
+[node name="SeedCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ome1c")
+disabled = true
+
+[node name="SeedArea" type="Area3D" parent="."]
+
+[node name="AreaCollision" type="CollisionShape3D" parent="SeedArea"]
+shape = SubResource("SphereShape3D_1qpki")
+
+[connection signal="area_entered" from="SeedArea" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="SeedArea" to="." method="_on_water_area_body_entered"]

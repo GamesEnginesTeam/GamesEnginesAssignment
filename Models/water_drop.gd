@@ -8,6 +8,8 @@ var water_Recoil_Z = rng.randf_range(1, 5)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_as_top_level(true)
+	await get_tree().create_timer(2).timeout
+	queue_free()
 	pass # Replace with function body.
 
 func water_shot():

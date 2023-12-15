@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbkaq8xethgxt"]
+
+[ext_resource type="Script" path="res://Models/seedGun.gd" id="1_fmlsd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vr200"]
+size = Vector3(0.1, 0.1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgyc3"]
+albedo_color = Color(0.282353, 1, 0.352941, 1)
+
+[node name="SeedGun" type="Node3D" node_paths=PackedStringArray("seed_gun_muzzle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231919, -0.130968, -0.105657)
+script = ExtResource("1_fmlsd")
+seed_gun_muzzle = NodePath("SeedGunMuzzle")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vr200")
+surface_material_override/0 = SubResource("StandardMaterial3D_qgyc3")
+
+[node name="SeedGunMuzzle" type="Node3D" parent="."]
+transform = Transform3D(1, -1.21652e-31, 0, -1.21652e-31, 1, 0, 0, 0, 1, 0, 0, -0.250389)

@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccpp2welka0kd"]
+[gd_scene load_steps=7 format=3 uid="uid://ccpp2welka0kd"]
 
 [ext_resource type="Script" path="res://Assets/FPSPlayer/fps_controller.gd" id="1_8nref"]
 [ext_resource type="Material" uid="uid://bcspi8wfd1oy5" path="res://Assets/FPSPlayer/Base_Cel_Material.tres" id="2_t3dnl"]
 [ext_resource type="PackedScene" uid="uid://be025wg6tefx6" path="res://Models/WateringCan.tscn" id="3_nlq2l"]
+[ext_resource type="PackedScene" uid="uid://dbkaq8xethgxt" path="res://Models/seedGun.tscn" id="4_k0tu3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dgwvp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fjwj7"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "player_camera", "tool_placement")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "watering_can", "seed_gun", "player_camera", "tool_placement")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 script = ExtResource("1_8nref")
 CAMERA_CONTROLLER = NodePath("CameraController/Camera3D")
+watering_can = NodePath("CameraController/Camera3D/WateringCan")
+seed_gun = NodePath("CameraController/Camera3D/SeedGun")
 player_camera = NodePath("CameraController/Camera3D")
 tool_placement = NodePath("CameraController/Camera3D/ToolPlacement")
 
@@ -40,3 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231919, -0.130968, -0.10565
 
 [node name="WateringCan" parent="CameraController/Camera3D" instance=ExtResource("3_nlq2l")]
 transform = Transform3D(-0.2, 6.97574e-17, 3.01992e-08, 6.97574e-17, 0.2, -6.97574e-17, -3.01992e-08, -6.97574e-17, -0.2, 0.597776, -0.644208, 0.0552181)
+visible = false
+
+[node name="SeedGun" parent="CameraController/Camera3D" instance=ExtResource("4_k0tu3")]
+visible = false
