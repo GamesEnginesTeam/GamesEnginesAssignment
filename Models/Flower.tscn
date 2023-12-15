@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvk0yadfscr08"]
+[gd_scene load_steps=6 format=3 uid="uid://cvk0yadfscr08"]
 
 [ext_resource type="PackedScene" uid="uid://b451y71mql4b" path="res://Models/Flower.glb" id="1_e5h8c"]
+[ext_resource type="Gradient" uid="uid://dhugran3h8v6t" path="res://ColorCorrection/NeonColorRamp.tres" id="2_mrkyj"]
+[ext_resource type="FastNoiseLite" uid="uid://d126huekl6kro" path="res://ColorCorrection/NeonNoise.tres" id="3_facor"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_243c4"]
+seamless = true
+seamless_blend_skirt = 0.37
+color_ramp = ExtResource("2_mrkyj")
+noise = ExtResource("3_facor")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmsck"]
+albedo_texture = SubResource("NoiseTexture2D_243c4")
 
 [node name="Flower" instance=ExtResource("1_e5h8c")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.08165e-12, 0.795, 2.08165e-12)
+
+[node name="Petals" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dmsck")

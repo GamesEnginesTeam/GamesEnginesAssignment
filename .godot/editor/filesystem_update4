@@ -10,3 +10,6 @@ res://Models/WateringCan.tscn
 res://Models/grass.tscn
 res://Models/water_drop.tscn
 res://Models/seed_instance.tscn
+res://Models/water_drop.gd
+res://Models/WateringCan.gd
+res://ColorCorrection/NeonNoise.tres

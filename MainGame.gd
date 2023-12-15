@@ -1,9 +1,6 @@
 extends Node3D
 
 @export
-var waterDroplet = Node3D
-
-@export
 var flower = preload("res://Models/Flower.tscn")
 var groundMoistureCounter = 0
 
@@ -18,13 +15,16 @@ func _ready():
 # This is the Ground 
 func _on_area_3d_body_entered(body):
 	# print(body.name)
+	if (groundMoistureCounter == 100):
+		print("Flower is Complete!")
+		# groundMoistureCounter = 0
 	
-	if body.name == "Water":
+	if body.get_groups().has("water") && groundMoistureCounter < 100:
 		var createdFlower = flower.instantiate()
 		add_child(createdFlower)
 		createdFlower.transform = flowerSpawnPoint.global_transform
 		groundMoistureCounter = groundMoistureCounter + 1
-		print(groundMoistureCounter)
+		print("Flower is " + str(groundMoistureCounter) + "% moisturized!!!")
 		pass
 
 	if body.name == "Player":

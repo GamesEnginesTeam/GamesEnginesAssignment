@@ -13,13 +13,16 @@ func _ready():
 	queue_free()
 
 func water_shot():
-	linear_velocity = (-transform.basis.z * Water_Speed * water_Recoil_Z) + (transform.basis.x * water_Recoil_X)
+	# Shoot with Recoil
+	# linear_velocity = (-transform.basis.z * Water_Speed * water_Recoil_Z) + (transform.basis.x * water_Recoil_X)
+	
+	
+	linear_velocity = (-transform.basis.z * Water_Speed)
 
 # When entering an area, do something
 func _on_area_3d_area_entered(area):
 	pass
-
 # When something enters the waters area, do something
 func _on_water_area_body_entered(body):
-	if body.name == "Ground":
-		queue_free()
+	print(body.name)
+	queue_free()
