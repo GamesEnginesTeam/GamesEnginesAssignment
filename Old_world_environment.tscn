@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dblt2fa5ht4gg"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1rpjr"]
+rayleigh_color = Color(0.301961, 0.360784, 0.6, 1)
+mie_coefficient = 0.008
+turbidity = 1.5
+ground_color = Color(1, 1, 1, 1)
+energy_multiplier = 5.0
+
+[sub_resource type="Sky" id="Sky_llenv"]
+sky_material = SubResource("PhysicalSkyMaterial_1rpjr")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_51qvt"]
+sky = SubResource("Sky_llenv")
+sky_custom_fov = 110.0
+fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_contrast = 1.25
+adjustment_saturation = 1.25
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_clqcj"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_51qvt")
+camera_attributes = SubResource("CameraAttributesPhysical_clqcj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 2.4663e-16, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2.08165e-12, 2, 2.08165e-12)
+shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.111

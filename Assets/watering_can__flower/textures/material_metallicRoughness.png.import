@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wmud45ic6ye"
 path.s3tc="res://.godot/imported/material_metallicRoughness.png-34883877800f445584b1f5d58219db9c.s3tc.ctex"
+path.etc2="res://.godot/imported/material_metallicRoughness.png-34883877800f445584b1f5d58219db9c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/watering_can__flower/textures/material_metallicRoughness.png"
-dest_files=["res://.godot/imported/material_metallicRoughness.png-34883877800f445584b1f5d58219db9c.s3tc.ctex"]
+dest_files=["res://.godot/imported/material_metallicRoughness.png-34883877800f445584b1f5d58219db9c.s3tc.ctex", "res://.godot/imported/material_metallicRoughness.png-34883877800f445584b1f5d58219db9c.etc2.ctex"]
 
 [params]
 

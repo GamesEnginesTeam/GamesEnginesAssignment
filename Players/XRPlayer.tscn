@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dolacp0ljcecm"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="1_i81kh"]
+[ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="3_62tvq"]
+[ext_resource type="PackedScene" uid="uid://w7th3d2hl7b5" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_R.gltf" id="4_1xe8r"]
+
+[sub_resource type="Environment" id="Environment_ad0t4"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_wxwdp"]
+
+[node name="XRToolsPlayerBody" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5, 2.08165e-12)
+top_level = true
+collision_layer = 2
+collision_mask = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_i81kh")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 2.08165e-12)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, -5.95416e-16, 2.4663e-16, 2.4663e-16, 0.707107, 0.707107, -5.95416e-16, -0.707107, 0.707107, 0, 0, 0)
+environment = SubResource("Environment_ad0t4")
+attributes = SubResource("CameraAttributesPhysical_wxwdp")
+current = true
+
+[node name="Left" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.08165e-12, 2.08165e-12)
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="Hand_Glove_L" parent="XROrigin3D/Left" instance=ExtResource("3_62tvq")]
+
+[node name="Right" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.08165e-12, 2.08165e-12)
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="Hand_Glove_R" parent="XROrigin3D/Right" instance=ExtResource("4_1xe8r")]
