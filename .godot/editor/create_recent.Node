@@ -1,3 +1,8 @@
+XRToolsMovementJog
+XRTools
+XRToolsMovementCrouch
+XRToolsMovementJump
+Node
 XRToolsMovementDirect
 XRToolsMovementTurn
 XRToolsMovementFootstep
@@ -8,8 +13,3 @@ Control
 XRCamera3D
 XRToolsStaging
 XRToolsMovementProvider
-Gardener
-XRToolsStartXR
-XROrigin3D
-XRToolsPlayerBody
-XRToolsMovementCrouch

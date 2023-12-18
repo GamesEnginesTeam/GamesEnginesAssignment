@@ -63,6 +63,13 @@ func initialize() -> bool:
 	# Check for OpenXR interface
 	xr_interface = XRServer.find_interface('OpenXR')
 	if xr_interface:
+		print("NAME IS: " + xr_interface.get_name())
+		print("SYSTEM INFO IS:")
+		for i in xr_interface.get_system_info():
+			print(i)
+		print("CAPABILITIES ARE:")
+		for i in xr_interface.get_capabilities():
+			print(i)
 		return _setup_for_openxr()
 
 	# Check for WebXR interface

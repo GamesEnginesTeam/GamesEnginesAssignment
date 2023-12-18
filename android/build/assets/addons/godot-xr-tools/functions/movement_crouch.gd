@@ -26,7 +26,7 @@ enum CrouchType {
 @export var crouch_height : float = 1.0
 
 ## Crouch button
-@export var crouch_button_action : String = "primary_click"
+@export var crouch_button_action : String
 
 ## Type of crouching
 @export var crouch_type : CrouchType = CrouchType.HOLD_TO_CROUCH
@@ -50,8 +50,10 @@ func is_xr_class(name : String) -> bool:
 
 # Perform jump movement
 func physics_movement(_delta: float, player_body: XRToolsPlayerBody, _disabled: bool):
+	
 	# Skip if the controller isn't active
 	if !_controller.get_is_active():
+		print("CONTROLLER IS: " + str(_controller.get_is_active()))
 		return
 
 	# Detect crouch button down and pressed states

@@ -4,6 +4,8 @@ res://Meshes/WaterDropMesh.res
 res://Assets/FPSPlayer/Base_Cel_Material.tres
 res://Meshes/GrassMesh.res
 res://ColorCorrection/NeonNoise.tres
+res://addons/godot-xr-tools/materials/highlight.tres
+res://openxr_action_map.tres
 res://Assets/FPSPlayer/FPSPlayer.tscn
 res://Models/WateringCan.tscn
 res://Models/grass.tscn
@@ -12,3 +14,11 @@ res://MainGame.tscn
 res://Models/seed_instance.tscn
 res://Models/Flower.tscn
 res://Old_world_environment.tscn
+res://addons/godot-xr-tools/xr_tools.gd
+res://Players/RightController.gd
+res://Players/LeftController.gd
+res://addons/godot-xr-tools/xr/start_xr.gd
+res://addons/godot-xr-tools/functions/movement_crouch.gd
+res://addons/godot-xr-tools/functions/movement_jump.gd
+res://addons/godot-xr-tools/functions/movement_turn.gd
+res://addons/godot-xr-tools/functions/movement_direct.gd

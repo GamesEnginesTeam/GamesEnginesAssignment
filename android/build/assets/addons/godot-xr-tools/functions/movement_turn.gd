@@ -33,7 +33,7 @@ enum TurnMode {
 @export var step_turn_angle : float = 20.0
 
 ## Our directional input
-@export var input_action : String = "primary"
+@export var input_action : String
 
 # Turn step accumulator
 var _turn_step : float = 0.0

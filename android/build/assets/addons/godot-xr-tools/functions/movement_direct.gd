@@ -22,7 +22,7 @@ extends XRToolsMovementProvider
 @export var strafe : bool = false
 
 ## Input action for movement direction
-@export var input_action : String = "primary"
+@export var input_action : String
 
 
 # Controller node

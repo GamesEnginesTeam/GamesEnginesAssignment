@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dolacp0ljcecm"]
+[gd_scene load_steps=15 format=3 uid="uid://dolacp0ljcecm"]
 
+[ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_cccl3"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="1_i81kh"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_direct.gd" id="2_4uue6"]
+[ext_resource type="Script" path="res://Players/LeftController.gd" id="2_onbvt"]
 [ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="3_62tvq"]
 [ext_resource type="PackedScene" uid="uid://w7th3d2hl7b5" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_R.gltf" id="4_1xe8r"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/functions/movement_turn.gd" id="5_y8pwv"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_lvvtd"]
+[ext_resource type="Script" path="res://Players/RightController.gd" id="5_r82vr"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="7_sukdp"]
+[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="8_ug164"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_xqxv8"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h8f0t"]
 rayleigh_coefficient = 2.5
@@ -32,25 +37,35 @@ environment = SubResource("Environment_ad0t4")
 attributes = SubResource("CameraAttributesPhysical_ptic8")
 current = true
 
+[node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_cccl3")]
+
 [node name="Left" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.08165e-12, 2.08165e-12)
 tracker = &"left_hand"
-pose = &"aim"
+script = ExtResource("2_onbvt")
 
 [node name="Hand_Glove_L" parent="Left" instance=ExtResource("3_62tvq")]
 
-[node name="XRToolsMovementDirect" type="Node" parent="Left" groups=["movement_providers"]]
-script = ExtResource("2_4uue6")
+[node name="MovementDirect" parent="Left" instance=ExtResource("4_lvvtd")]
+strafe = true
+input_action = "primary"
 
 [node name="Right" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.08165e-12, 2.08165e-12)
 tracker = &"right_hand"
-pose = &"aim"
+script = ExtResource("5_r82vr")
 
 [node name="Hand_Glove_R" parent="Right" instance=ExtResource("4_1xe8r")]
 
-[node name="XRToolsMovementTurn" type="Node" parent="Right" groups=["movement_providers"]]
-script = ExtResource("5_y8pwv")
+[node name="MovementJump" parent="Right" instance=ExtResource("7_sukdp")]
+jump_button_action = "ax_button"
+
+[node name="MovementCrouch" parent="Right" instance=ExtResource("8_ug164")]
+crouch_button_action = "by_button"
+
+[node name="MovementTurn" parent="Right" instance=ExtResource("9_xqxv8")]
+turn_mode = 2
+input_action = "secondary"
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="."]
 top_level = true
@@ -59,3 +74,4 @@ collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_i81kh")
+player_height_min = 1.5
