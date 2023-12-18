@@ -53,7 +53,7 @@ func physics_movement(_delta: float, player_body: XRToolsPlayerBody, _disabled: 
 	
 	# Skip if the controller isn't active
 	if !_controller.get_is_active():
-		print("CONTROLLER IS: " + str(_controller.get_is_active()))
+		#print("CONTROLLER IS: " + str(_controller.get_is_active()))
 		return
 
 	# Detect crouch button down and pressed states

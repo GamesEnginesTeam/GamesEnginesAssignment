@@ -1,16 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7bcln0wu46ig"]
+[gd_scene load_steps=4 format=3 uid="uid://b7bcln0wu46ig"]
 
 [ext_resource type="Script" path="res://Models/water_drop.gd" id="1_a8vxg"]
 [ext_resource type="ArrayMesh" uid="uid://cr6nui4ku6by7" path="res://Meshes/WaterDropMesh.res" id="1_je6ay"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ome1c"]
-radius = 0.08
+radius = 0.04
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1qpki"]
-margin = 0.03
-radius = 0.03
-
-[node name="Water" type="RigidBody3D" groups=["water"]]
+[node name="Water" type="RigidBody3D" node_paths=PackedStringArray("waterRoot") groups=["water"]]
 collision_layer = 8
 collision_mask = 3
 axis_lock_angular_x = true
@@ -20,6 +16,7 @@ mass = 0.1
 gravity_scale = 0.5
 lock_rotation = true
 script = ExtResource("1_a8vxg")
+waterRoot = NodePath(".")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0, 0)
@@ -27,11 +24,3 @@ mesh = ExtResource("1_je6ay")
 
 [node name="WaterCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ome1c")
-
-[node name="WaterArea" type="Area3D" parent="."]
-
-[node name="AreaCollision" type="CollisionShape3D" parent="WaterArea"]
-shape = SubResource("SphereShape3D_1qpki")
-
-[connection signal="area_entered" from="WaterArea" to="." method="_on_area_3d_area_entered"]
-[connection signal="body_entered" from="WaterArea" to="." method="_on_water_area_body_entered"]

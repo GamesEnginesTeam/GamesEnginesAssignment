@@ -4,22 +4,18 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="1_i81kh"]
 [ext_resource type="Script" path="res://Players/LeftController.gd" id="2_onbvt"]
 [ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="3_62tvq"]
-[ext_resource type="PackedScene" uid="uid://w7th3d2hl7b5" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_R.gltf" id="4_1xe8r"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_lvvtd"]
 [ext_resource type="Script" path="res://Players/RightController.gd" id="5_r82vr"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="7_sukdp"]
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="8_ug164"]
+[ext_resource type="PackedScene" uid="uid://be025wg6tefx6" path="res://Models/WateringCan.tscn" id="9_2i7se"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="9_xqxv8"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h8f0t"]
-rayleigh_coefficient = 2.5
-mie_eccentricity = 0.9
-turbidity = 20.0
-ground_color = Color(1, 1, 1, 1)
-energy_multiplier = 2.0
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_psatv"]
+ground_curve = 100.0
 
 [sub_resource type="Sky" id="Sky_h8i2d"]
-sky_material = SubResource("PhysicalSkyMaterial_h8f0t")
+sky_material = SubResource("ProceduralSkyMaterial_psatv")
 
 [sub_resource type="Environment" id="Environment_ad0t4"]
 background_mode = 2
@@ -27,17 +23,42 @@ background_energy_multiplier = 2.5
 sky = SubResource("Sky_h8i2d")
 sky_custom_fov = 110.0
 
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ptic8"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y1rnk"]
 
 [node name="XROrigin3D" type="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 2.08165e-12)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 environment = SubResource("Environment_ad0t4")
-attributes = SubResource("CameraAttributesPhysical_ptic8")
+attributes = SubResource("CameraAttributesPractical_y1rnk")
+doppler_tracking = 1
 current = true
+fov = 110.0
 
 [node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_cccl3")]
+
+[node name="Control" type="Control" parent="XRCamera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -23.5
+offset_right = 67.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BLEH BLEH BLEH"
 
 [node name="Left" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.08165e-12, 2.08165e-12)
@@ -55,8 +76,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.08165e-12, 2.08165e-12)
 tracker = &"right_hand"
 script = ExtResource("5_r82vr")
 
-[node name="Hand_Glove_R" parent="Right" instance=ExtResource("4_1xe8r")]
-
 [node name="MovementJump" parent="Right" instance=ExtResource("7_sukdp")]
 jump_button_action = "ax_button"
 
@@ -66,6 +85,8 @@ crouch_button_action = "by_button"
 [node name="MovementTurn" parent="Right" instance=ExtResource("9_xqxv8")]
 turn_mode = 2
 input_action = "secondary"
+
+[node name="WateringCan" parent="Right" instance=ExtResource("9_2i7se")]
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="."]
 top_level = true

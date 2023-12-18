@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvk0yadfscr08"]
+[gd_scene load_steps=8 format=3 uid="uid://cvk0yadfscr08"]
 
 [ext_resource type="PackedScene" uid="uid://b451y71mql4b" path="res://Models/Flower.glb" id="1_e5h8c"]
+[ext_resource type="Script" path="res://Models/FlowerScript.gd" id="2_d7rpf"]
 [ext_resource type="Gradient" uid="uid://dhugran3h8v6t" path="res://ColorCorrection/NeonColorRamp.tres" id="2_mrkyj"]
 [ext_resource type="FastNoiseLite" uid="uid://d126huekl6kro" path="res://ColorCorrection/NeonNoise.tres" id="3_facor"]
 
@@ -13,8 +14,52 @@ noise = ExtResource("3_facor")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmsck"]
 albedo_texture = SubResource("NoiseTexture2D_243c4")
 
-[node name="Flower" instance=ExtResource("1_e5h8c")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.08165e-12, 0.795, 2.08165e-12)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypkyk"]
+size = Vector3(10, 5, 10)
+
+[node name="Flower" node_paths=PackedStringArray("ObjectiveProgress", "ObjectiveName") instance=ExtResource("1_e5h8c")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_d7rpf")
+ObjectiveProgress = NodePath("ObjectiveProgress")
+ObjectiveName = NodePath("ObjectiveName")
+
+[node name="Stem" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 2.08165e-12)
+
+[node name="FlowerCenter" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 2.08165e-12)
 
 [node name="Petals" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 2.08165e-12)
 surface_material_override/0 = SubResource("StandardMaterial3D_dmsck")
+
+[node name="Leaf1" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 2.08165e-12)
+
+[node name="Leaf2" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 2.08165e-12)
+
+[node name="ObjectiveName" type="Label3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, 2.08165e-12)
+billboard = 1
+modulate = Color(1, 0, 0, 1)
+text = "FLOWER
+"
+font_size = 400
+
+[node name="ObjectiveProgress" type="Label3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 7, 2.08165e-12)
+billboard = 1
+modulate = Color(1, 0, 0, 1)
+text = "0%
+"
+font_size = 100
+
+[node name="Area3D" type="Area3D" parent="." index="7"]
+collision_mask = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 2.08165e-12)
+shape = SubResource("BoxShape3D_ypkyk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

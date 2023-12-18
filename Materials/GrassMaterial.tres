@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cf2jjucvheftf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuda5"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.02
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_uuda5")
+albedo_color = Color(0.607843, 0.964706, 0.352941, 1)
+roughness = 0.0
