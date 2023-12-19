@@ -67,32 +67,9 @@ input_action = "secondary"
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="."]
 top_level = true
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 15
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_i81kh")
 player_height_min = 1.5
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -23.5
-offset_right = 67.0
-offset_bottom = 23.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "BLEH BLEH BLEH"

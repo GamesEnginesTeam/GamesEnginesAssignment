@@ -7,6 +7,8 @@ extends Node3D
 
 @onready var _controller := XRHelpers.get_xr_controller(self)
 
+var firerateTimer = Timer.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -28,8 +30,9 @@ func _process(delta):
 	#(_controller.get_float("trigger") > 0)	
 	
 	if _controller.get_is_active():
-		if (_controller.get_float("trigger") > 0.25) && watering_can.is_visible_in_tree():
+		if (_controller.get_float("trigger") > 0) && watering_can.is_visible_in_tree() && firerateTimer.is_stopped():
 			var water = water_droplet.instantiate()
 			root_node.add_child(water)
 			water.transform = watering_can_muzzle.global_transform
 			water.water_shot(_controller)
+			firerateTimer.start(0.1)

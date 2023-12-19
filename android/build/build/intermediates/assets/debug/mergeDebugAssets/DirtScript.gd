@@ -19,11 +19,11 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_ground_area_body_entered(body):
-	
-	if body.get_groups().has("water"):
-		if (flowerCounter < 1):
-			flowerCounter = flowerCounter + 1
-			var createdFlower = flower.instantiate()
-			add_child(createdFlower)
-			GroundArea.queue_free()
+#func _on_ground_area_body_entered(body):
+	#
+	#if body.get_groups().has("water"):
+		#if (flowerCounter < 1):
+			#flowerCounter = flowerCounter + 1
+			#var createdFlower = flower.instantiate()
+			#add_child(createdFlower)
+			#GroundArea.queue_free()

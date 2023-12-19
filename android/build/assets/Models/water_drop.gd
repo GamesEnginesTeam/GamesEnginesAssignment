@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const Water_Speed = 100
+const Water_Speed = 10
 var rng = RandomNumberGenerator.new()
 var water_Recoil_X = rng.randf_range(-30, 30)
 var water_Recoil_Z = rng.randf_range(1, 5)
@@ -26,7 +26,7 @@ func water_shot(controller):
 		#print("CONTROLLER IN WATERDROP IS: " + str(_controller.get_is_active()))
 		##return
 	
-	if (controller.get_float("trigger") > 0.25):
+	if (controller.get_float("trigger") > 0):
 		linear_velocity = (-transform.basis.z * Water_Speed * (controller.get_float("trigger") * 10))
 		#return
 	

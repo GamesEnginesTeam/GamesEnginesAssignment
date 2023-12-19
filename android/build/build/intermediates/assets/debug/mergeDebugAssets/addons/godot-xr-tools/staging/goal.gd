@@ -28,11 +28,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	flowerAmount.text = str(flowerCount) + " / " + str(flowerGoal)
-	if (flowerCount == flowerGoal):
-		goal.monitorable = true
-		goal.monitoring = true
-		flowersGrown.modulate = Color.GREEN
-		flowerAmount.modulate = Color.GREEN
 
 func _on_body_entered(body):
 	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
@@ -41,3 +36,17 @@ func _on_body_entered(body):
 		
 	# Start loading the target scene
 	scene_base.load_scene(target_scene)
+
+func AddFlower():
+	flowerCount += 1
+
+func _on_flower_increment_flower_count():
+	AddFlower()
+	if flowerCount == flowerGoal:
+		goalOpen()
+
+func goalOpen():
+	goal.monitorable = true
+	goal.monitoring = true
+	flowersGrown.modulate = Color.GREEN
+	flowerAmount.modulate = Color.GREEN

@@ -30,3 +30,6 @@ res://addons/godot-xr-tools/staging/zone_1.tscn
 res://Models/Flower.tres.gd
 res://addons/godot-xr-tools/staging/goal.gd
 res://goalMaterial.tres
+res://addons/godot-xr-tools/staging/scene_base.gd
+res://DirtScript.gd
+res://openxr_action_map.tres

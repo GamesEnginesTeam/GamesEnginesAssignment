@@ -3,20 +3,22 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/goal.gd" id="1_suehw"]
 [ext_resource type="Material" uid="uid://560b3hqwvfib" path="res://goalMaterial.tres" id="2_cjevl"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_1gkr0"]
+[sub_resource type="BoxMesh" id="BoxMesh_4qm0e"]
+size = Vector3(1, 2, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_q2of5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_exhb5"]
+size = Vector3(1, 2, 1)
 
 [node name="Goal" type="Area3D"]
 collision_mask = 4
 script = ExtResource("1_suehw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_1gkr0")
+mesh = SubResource("BoxMesh_4qm0e")
 surface_material_override/0 = ExtResource("2_cjevl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_q2of5")
+shape = SubResource("BoxShape3D_exhb5")
 
 [node name="FlowersGrown" type="Label3D" parent="."]
 billboard = 1
