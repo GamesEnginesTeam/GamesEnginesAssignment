@@ -20,6 +20,9 @@ var flowerArea3dMonitorable = $Area3D.monitorable
 @onready
 var flower = $"."
 
+@export
+var particles : GPUParticles3D
+
 signal incrementFlowerCount()
 
 # Called when the node enters the scene tree for the first time.
@@ -33,13 +36,8 @@ func _process(delta):
 func _on_area_3d_body_entered(body):
 	if (groundMoistureCounter == 100 && flowerArea3dMonitoring):
 		
-		print("groundMoistureCounter is: " + str(groundMoistureCounter))
-		print("flowerArea3d.monitoring is: " + str(flowerArea3dMonitoring))
-		
 		flowerArea3dMonitoring = false
 		flowerArea3dMonitorable = false
-		
-		print("flowerArea3d.monitoring is NOW: " + str(flowerArea3dMonitoring))
 		
 		ObjectiveName.text = "Flower is Complete!"
 		ObjectiveName.modulate = Color.GREEN
@@ -51,6 +49,8 @@ func _on_area_3d_body_entered(body):
 		
 		#flowerArea3d.monitoring = false
 		#flowerArea3d.monitorable = false
+		
+		particles.emitting = true
 	
 	if body.get_groups().has("water") && groundMoistureCounter < 100:
 		print(groundMoistureCounter)

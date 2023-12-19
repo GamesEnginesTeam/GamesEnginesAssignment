@@ -103,7 +103,7 @@ text = "Water all the plants in the level to open the goal."
 font_size = 50
 autowrap_mode = 2
 
-[node name="Label3D4" type="Label3D" parent="."]
+[node name="Controls" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 5)
 modulate = Color(1, 0.164706, 0.0666667, 1)
 text = "The controls are as follows:
@@ -111,7 +111,7 @@ b to crouch
 a to jump
 trigger to shoot
 right stick to turn
-left stick to move"
+left stick to move."
 font_size = 50
 autowrap_mode = 2
 

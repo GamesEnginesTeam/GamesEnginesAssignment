@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvk0yadfscr08"]
+[gd_scene load_steps=24 format=3 uid="uid://cvk0yadfscr08"]
 
 [ext_resource type="Script" path="res://Models/Flower.tres.gd" id="1_rl4e7"]
 
@@ -217,9 +217,26 @@ shadow_mesh = SubResource("ArrayMesh_swp6t")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ypkyk"]
 size = Vector3(10, 5, 10)
 
-[node name="Flower" type="Node3D"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1tka"]
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 15.0
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6pyk"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_icxdq"]
+material = SubResource("StandardMaterial3D_d6pyk")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Flower" type="Node3D" node_paths=PackedStringArray("particles")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_rl4e7")
+particles = NodePath("GPUParticles3D")
 
 [node name="Stem" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 2.08165e-12)
@@ -269,5 +286,15 @@ collision_mask = 12
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 2.08165e-12)
 shape = SubResource("BoxShape3D_ypkyk")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-32.3094, -95.8819, -32.6546, 61.4585, 118.661, 66.5469)
+process_material = SubResource("ParticleProcessMaterial_s1tka")
+draw_pass_1 = SubResource("BoxMesh_icxdq")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfsaqg2yi7ufe"]
+[gd_scene load_steps=10 format=3 uid="uid://cfsaqg2yi7ufe"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/goal.gd" id="1_suehw"]
 [ext_resource type="Material" uid="uid://560b3hqwvfib" path="res://goalMaterial.tres" id="2_cjevl"]
@@ -9,9 +9,32 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_exhb5"]
 size = Vector3(1, 2, 1)
 
-[node name="Goal" type="Area3D"]
+[sub_resource type="Curve" id="Curve_gk4na"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.497143, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_scw0h"]
+curve = SubResource("Curve_gk4na")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l8jr6"]
+gravity = Vector3(2.08165e-12, -2, 2.08165e-12)
+scale_curve = SubResource("CurveTexture_scw0h")
+scale_over_velocity_max = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8m6xw"]
+albedo_color = Color(0.231373, 0.0980392, 1, 0.196078)
+emission_enabled = true
+emission = Color(0.215686, 0.239216, 1, 1)
+emission_energy_multiplier = 3.03
+
+[sub_resource type="TorusMesh" id="TorusMesh_tao36"]
+material = SubResource("StandardMaterial3D_8m6xw")
+inner_radius = 0.9
+
+[node name="Goal" type="Area3D" node_paths=PackedStringArray("particles")]
 collision_mask = 4
 script = ExtResource("1_suehw")
+particles = NodePath("GPUParticles3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_4qm0e")
@@ -33,5 +56,16 @@ modulate = Color(1, 0, 0, 1)
 text = "
 "
 font_size = 20
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 2.08165e-12)
+layers = 17
+emitting = false
+amount = 5
+lifetime = 2.7
+explosiveness = 0.5
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_l8jr6")
+draw_pass_1 = SubResource("TorusMesh_tao36")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,3 +1,4 @@
+GPUParticles3D
 Label3D
 RichTextLabel
 TextEdit
@@ -11,4 +12,3 @@ VisibleOnScreenEnabler3D
 Label
 MultiMeshInstance3D
 XRToolsMovementJog
-XRTools
