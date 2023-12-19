@@ -1,12 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfsaqg2yi7ufe"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/goal.gd" id="1_suehw"]
+[ext_resource type="Material" uid="uid://560b3hqwvfib" path="res://goalMaterial.tres" id="2_cjevl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1gkr0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnmon"]
-transparency = 1
-albedo_color = Color(0.239216, 1, 0, 0.27451)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q2of5"]
 
@@ -16,9 +13,23 @@ script = ExtResource("1_suehw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_1gkr0")
-surface_material_override/0 = SubResource("StandardMaterial3D_hnmon")
+surface_material_override/0 = ExtResource("2_cjevl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_q2of5")
+
+[node name="FlowersGrown" type="Label3D" parent="."]
+billboard = 1
+modulate = Color(1, 0, 0, 1)
+text = "Flowers Grown"
+font_size = 20
+
+[node name="FlowerAmount" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.25, 2.08165e-12)
+billboard = 1
+modulate = Color(1, 0, 0, 1)
+text = "
+"
+font_size = 20
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

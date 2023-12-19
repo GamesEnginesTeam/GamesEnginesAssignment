@@ -1,3 +1,4 @@
+Label3D
 RichTextLabel
 TextEdit
 Control
@@ -7,9 +8,7 @@ Area3D
 GridMap
 VisibleOnScreenNotifier3D
 VisibleOnScreenEnabler3D
-Label3D
 Label
 MultiMeshInstance3D
 XRToolsMovementJog
 XRTools
-XRToolsMovementCrouch

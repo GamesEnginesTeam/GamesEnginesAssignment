@@ -6,7 +6,7 @@ var water_Recoil_X = rng.randf_range(-30, 30)
 var water_Recoil_Z = rng.randf_range(1, 5)
 var node_name = "Water"
 
-@onready var _controller := XRHelpers.get_xr_controller(self)
+#@onready var _controller := XRHelpers.get_xr_controller(self)
 
 @export
 var waterRoot : Node3D
@@ -18,16 +18,16 @@ func _ready():
 	queue_free()
 	pass
 
-func water_shot():
+func water_shot(controller):
 	# Shoot with Recoil
 	# linear_velocity = (-transform.basis.z * Water_Speed * water_Recoil_Z) + (transform.basis.x * water_Recoil_X)
 	
-	if !_controller.get_is_active():
-		print("CONTROLLER IN WATERDROP IS: " + str(_controller.get_is_active()))
-		#return
+	#if !_controller.get_is_active():
+		#print("CONTROLLER IN WATERDROP IS: " + str(_controller.get_is_active()))
+		##return
 	
-	if (_controller.get_float("trigger") > 0.25):
-		linear_velocity = (transform.basis.z * Water_Speed * (_controller.get_float("trigger") * 10))
+	if (controller.get_float("trigger") > 0.25):
+		linear_velocity = (-transform.basis.z * Water_Speed * (controller.get_float("trigger") * 10))
 		#return
 	
 	#linear_velocity = (-transform.basis.z * Water_Speed)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d215y0y52jhao"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_pqldt"]
+
+[node name="Zone" type="Node3D"]
+script = ExtResource("1_pqldt")

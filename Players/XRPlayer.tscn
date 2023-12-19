@@ -37,29 +37,6 @@ fov = 110.0
 
 [node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_cccl3")]
 
-[node name="Control" type="Control" parent="XRCamera3D"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="XRCamera3D/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -23.5
-offset_right = 67.0
-offset_bottom = 23.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "BLEH BLEH BLEH"
-
 [node name="Left" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.08165e-12, 2.08165e-12)
 tracker = &"left_hand"
@@ -96,3 +73,26 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_i81kh")
 player_height_min = 1.5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -23.5
+offset_right = 67.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BLEH BLEH BLEH"

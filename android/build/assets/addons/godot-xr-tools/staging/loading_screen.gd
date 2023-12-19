@@ -139,6 +139,6 @@ func _update_enable_press_to_continue():
 		$PressToContinue.visible = enable_press_to_continue
 		$PressToContinue/HoldButton.enabled = enable_press_to_continue
 
-
 func _on_HoldButton_pressed():
+	print("CONTINUING")
 	emit_signal("continue_pressed")
