@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dj3h0xq52vqsr"]
+[gd_scene load_steps=34 format=3 uid="uid://dj3h0xq52vqsr"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_4mqnk"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="2_uc4ih"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://addons/godot-xr-tools/staging/goal.tscn" id="6_oeee4"]
 [ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="6_vw7qo"]
 [ext_resource type="Texture2D" uid="uid://qyojpd3blkpg" path="res://textures/lava-magma-with-stones-in-cartoon-style-seamless-pattern-background-eruption-effect-landscape-texture-design-illustration-vector.jpg" id="7_ol2tv"]
+[ext_resource type="PackedScene" uid="uid://0xlsitpu17r1" path="res://addons/godot-xr-tools/functions/movement_footstep.tscn" id="7_r2aty"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="7_s7bxy"]
 [ext_resource type="Script" path="res://Players/RightController.gd" id="8_4njgv"]
+[ext_resource type="Resource" uid="uid://derkvnos5vuk3" path="res://Levels/XrToolsAudio.tres" id="8_8k4xe"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="9_7yga1"]
 [ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="10_v7o7u"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="11_c32hb"]
@@ -17,6 +20,7 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="13_klkgw"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="14_stas2"]
 [ext_resource type="Script" path="res://Models/Lava.gd" id="17_giork"]
+[ext_resource type="FontFile" uid="uid://b8djxkeovw81q" path="res://Font/Rubik_Bubbles/RubikBubbles-Regular.ttf" id="18_pyh4u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_psatv"]
 sky_top_color = Color(0.211765, 0.211765, 0.211765, 1)
@@ -121,6 +125,13 @@ script = ExtResource("5_6yca1")
 
 [node name="Hand_Glove_L" parent="XROrigin3D/Left" instance=ExtResource("6_vw7qo")]
 
+[node name="MovementFootstep" parent="XROrigin3D/Left" instance=ExtResource("7_r2aty")]
+default_surface_audio_type = ExtResource("8_8k4xe")
+
+[node name="MovementDirect" parent="XROrigin3D/Left" instance=ExtResource("7_s7bxy")]
+strafe = true
+input_action = "primary"
+
 [node name="Right" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.08165e-12, 2.08165e-12)
 tracker = &"right_hand"
@@ -158,12 +169,14 @@ target_scene = "res://Levels/Level2.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 5)
 modulate = Color(0.596078, 0.552941, 0.513726, 1)
 text = "Castle walls"
+font = ExtResource("18_pyh4u")
 font_size = 70
 
 [node name="Description" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3.5, 5)
 modulate = Color(1, 0.231373, 0.227451, 1)
 text = "Press A to jump."
+font = ExtResource("18_pyh4u")
 font_size = 50
 
 [node name="GridMap" type="GridMap" parent="."]

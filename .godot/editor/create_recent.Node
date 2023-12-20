@@ -1,4 +1,6 @@
+AudioStreamPlayer3D
 XRToolsMovementFootstep
+XRToolsMovementDirect
 AudioStreamPlayer
 MeshInstance3D
 XRToolsHighlightRing
@@ -10,5 +12,3 @@ XRToolsMovementGrapple
 XRToolsHoldButton
 XRToolsTeleportArea
 StaticBody3D
-CollisionShape3D
-Area3D
