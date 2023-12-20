@@ -18,6 +18,9 @@ var target_scene : String
 @export
 var particles : GPUParticles3D
 
+@export
+var goalAudio : AudioStreamPlayer3D
+
 var goal = $"."
 
 # Called when the node enters the scene tree for the first time.
@@ -54,3 +57,4 @@ func goalOpen():
 	flowersGrown.modulate = Color.GREEN
 	flowerAmount.modulate = Color.GREEN
 	particles.emitting = true
+	goalAudio.playing = true

@@ -23,6 +23,9 @@ var flower = $"."
 @export
 var particles : GPUParticles3D
 
+@onready
+var flowerAudio : AudioStreamPlayer3D = $"./AudioStreamPlayer3D"
+
 signal incrementFlowerCount()
 
 # Called when the node enters the scene tree for the first time.
@@ -51,6 +54,7 @@ func _on_area_3d_body_entered(body):
 		#flowerArea3d.monitorable = false
 		
 		particles.emitting = true
+		flowerAudio.playing = true
 	
 	if body.get_groups().has("water") && groundMoistureCounter < 100:
 		print(groundMoistureCounter)
