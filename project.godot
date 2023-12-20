@@ -21,7 +21,7 @@ XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/godotopenxrvendors/plugin.cfg")
+enabled=PackedStringArray("res://addons/boujie_water_shader/plugin.cfg", "res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/godotopenxrvendors/plugin.cfg")
 
 [input]
 

@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://cosf1wl6ytga6"]
+
+[ext_resource type="Texture2D" uid="uid://qyojpd3blkpg" path="res://textures/lava-magma-with-stones-in-cartoon-style-seamless-pattern-background-eruption-effect-landscape-texture-design-illustration-vector.jpg" id="1_67mh7"]
+[ext_resource type="Script" path="res://Models/Lava.gd" id="1_achyl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wk1s8"]
+size = Vector2(20, 20)
+
+[sub_resource type="Gradient" id="Gradient_7rjyk"]
+offsets = PackedFloat32Array(0, 0.301471, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 0.478431, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fg8tt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4rpah"]
+color_ramp = SubResource("Gradient_7rjyk")
+noise = SubResource("FastNoiseLite_fg8tt")
+
+[sub_resource type="Gradient" id="Gradient_isjdi"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yp2m0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8plfw"]
+color_ramp = SubResource("Gradient_isjdi")
+noise = SubResource("FastNoiseLite_yp2m0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xrn1"]
+albedo_texture = ExtResource("1_67mh7")
+emission_enabled = true
+emission = Color(0.513726, 0, 0, 1)
+emission_energy_multiplier = 30.0
+emission_texture = SubResource("NoiseTexture2D_4rpah")
+refraction_enabled = true
+refraction_scale = 1.0
+refraction_texture = SubResource("NoiseTexture2D_8plfw")
+uv1_scale = Vector3(8, 8, 8)
+uv1_triplanar = true
+disable_receive_shadows = true
+proximity_fade_enabled = true
+distance_fade_mode = 1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_db3l6"]
+
+[node name="Lava" type="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+collision_mask = 4
+script = ExtResource("1_achyl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_wk1s8")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xrn1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_db3l6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

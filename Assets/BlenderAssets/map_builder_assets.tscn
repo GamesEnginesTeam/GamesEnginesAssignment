@@ -1,5 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://hs7dppb77y01"]
+[gd_scene load_steps=12 format=3 uid="uid://hs7dppb77y01"]
 
 [ext_resource type="PackedScene" uid="uid://dkx665ewa3yuu" path="res://Assets/BlenderAssets/MapBuilderAssets.glb" id="1_llknr"]
+[ext_resource type="Texture2D" uid="uid://cfp7d12oyn6b3" path="res://textures/maxresdefault.jpg" id="2_4hajb"]
+[ext_resource type="Texture2D" uid="uid://bwk24d1mkgf6l" path="res://textures/360_F_470557375_GW11DOIa8jCOKzoVqNZsBgVo164ftq8R.jpg" id="2_be4i2"]
+[ext_resource type="Texture2D" uid="uid://b81lstik7xw82" path="res://textures/1000_F_137230460_cMm0Hrc0cSOSgkKqPzyTDPVKQl65YVd0.jpg" id="3_1bddk"]
+[ext_resource type="Texture2D" uid="uid://jayatpghm68d" path="res://textures/stone-tiles-texture-in-cartoon-style-free-vector.jpg" id="5_v6nu7"]
+[ext_resource type="Texture2D" uid="uid://bdqk6kxqbi4dh" path="res://textures/seamless-texture-grass-green-lawn-600nw-2008348157.webp" id="6_em1j6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_571ao"]
+albedo_texture = ExtResource("2_be4i2")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0otja"]
+albedo_texture = ExtResource("3_1bddk")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_068fs"]
+albedo_texture = ExtResource("2_4hajb")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhlqw"]
+albedo_texture = ExtResource("5_v6nu7")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufaim"]
+albedo_texture = ExtResource("6_em1j6")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.176777
 
 [node name="MapBuilderAssets" instance=ExtResource("1_llknr")]
+
+[node name="PlatformM " parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_571ao")
+
+[node name="PlatformL " parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0otja")
+
+[node name="PlatformS " parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_068fs")
+
+[node name="BlockM " parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nhlqw")
+
+[node name="BlockS " parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ufaim")

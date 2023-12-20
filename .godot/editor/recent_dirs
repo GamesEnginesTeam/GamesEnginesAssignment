@@ -1,9 +1,10 @@
-res://
+res://Levels
 res://Models
+res://Materials
+res://Assets/BlenderAssets
+res://
 res://addons/godot-xr-tools/staging
 /Users/danielmendes/Desktop/GamesEnginesAssignment/ProjectExports
-res://Assets/BlenderAssets
-res://Materials
 res://Meshes
 res://GardenerAsset
 /Users/danielmendes/Desktop/GamesEnginesAssignment/VRsetup/Keystore
