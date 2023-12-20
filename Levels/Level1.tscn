@@ -213,7 +213,8 @@ light_energy = 10.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_s5epc")
-volume_db = 1.0
+volume_db = 2.0
+autoplay = true
 
 [connection signal="incrementFlowerCount" from="Dirt/Flower" to="Goal" method="_on_flower_increment_flower_count"]
 [connection signal="incrementFlowerCount" from="Dirt2/Flower" to="Goal" method="_on_flower_increment_flower_count"]
