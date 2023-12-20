@@ -12,4 +12,3 @@ StaticBody3D
 CollisionShape3D
 Area3D
 WaterMaterialDesigner
-GPUParticles3D

@@ -1,4 +1,4 @@
-res://Levels/Level3.tscn
+res://Levels/Level1.tscn
 res://Assets/BlenderAssets/MapBuilder.tres
 res://addons/godot-xr-tools/materials/highlight.tres
 res://goalMaterial.tres
@@ -11,13 +11,3 @@ res://Levels/LavaShader.gdshader
 res://Levels/Level1.gdshader
 res://Materials/water.tres
 res://Levels/TutorialScene.tscn
-res://addons/godot-xr-tools/staging/goal.tscn
-res://Models/Flower.tscn
-res://Players/XRPlayer.tscn
-res://addons/godot-xr-tools/staging/main.tscn
-res://Levels/Level1.tscn
-res://Levels/Level2.tscn
-res://addons/godot-xr-tools/functions/movement_wall_walk.gd
-res://Levels/Level4.tscn
-res://Models/Lava.gd
-res://addons/grappling_hook_3d/example/main.tscn
