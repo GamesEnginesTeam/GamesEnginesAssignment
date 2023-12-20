@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="XRToolsSurfaceAudioType" load_steps=6 format=3 uid="uid://derkvnos5vuk3"]
+
+[ext_resource type="AudioStream" uid="uid://7hdhsyr8e7jb" path="res://Audio/hitGroundSound.mp3" id="1_vkc2r"]
+[ext_resource type="AudioStream" uid="uid://ca3ei3cpshhlx" path="res://Audio/JumpSound.mp3" id="2_8whby"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/audio/surface_audio_type.gd" id="3_3v7vu"]
+[ext_resource type="AudioStream" uid="uid://colg3sg21ehf6" path="res://Audio/Footsteps.mp3" id="4_hxyj5"]
+[ext_resource type="AudioStream" uid="uid://dlh0v5g81xs4d" path="res://Audio/Footsteps2.mp3" id="5_yodrt"]
+
+[resource]
+script = ExtResource("3_3v7vu")
+name = ""
+jump_sound = ExtResource("2_8whby")
+hit_sound = ExtResource("1_vkc2r")
+walk_sounds = Array[AudioStream]([ExtResource("4_hxyj5"), ExtResource("5_yodrt")])
+walk_pitch_minimum = 0.8
+walk_pitch_maximum = 1.2
