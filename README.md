@@ -71,4 +71,4 @@ We learned Signals, GDScript, How to make particles in Godot, VR game developmen
 
 This is a short demonstration of some of our project:
 
-![YouTube](https://www.youtube.com/watch?v=NMpMNUSamnQ)
+https://www.youtube.com/watch?v=NMpMNUSamnQ
