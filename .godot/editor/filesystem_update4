@@ -21,3 +21,4 @@ res://Models/Flower.tscn
 res://Models/Flower.tres.gd
 res://Players/XRPlayer.tscn
 res://addons/godot-xr-tools/staging/main.tscn
+res://Levels/EndGame.tscn

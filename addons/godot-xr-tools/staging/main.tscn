@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cckxqhgfj0bff" path="res://Images/FlowerOdysseyLoading.png" id="2_wy8jm"]
 
 [node name="Main" instance=ExtResource("1_50i4l")]
-main_scene = "res://Levels/Level4.tscn"
+main_scene = "res://Levels/TutorialScene.tscn"
 prompt_for_continue = false
 
 [node name="LoadingScreen" parent="." index="2"]
