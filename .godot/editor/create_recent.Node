@@ -1,5 +1,11 @@
-GridMap
+FogVolume
 OmniLight3D
+DirectionalLight3D
+GridMap
+XRToolsMovementGrapple
+XRToolsHoldButton
+XRToolsTeleportArea
+StaticBody3D
 CollisionShape3D
 Area3D
 WaterMaterialDesigner
@@ -7,8 +13,3 @@ MeshInstance3D
 GPUParticles3D
 Label3D
 RichTextLabel
-TextEdit
-Control
-VisibleOnScreenNotifier3D
-VisibleOnScreenEnabler3D
-Label

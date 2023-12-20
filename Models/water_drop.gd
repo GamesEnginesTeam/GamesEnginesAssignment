@@ -1,6 +1,8 @@
 extends RigidBody3D
 
-const Water_Speed = 10
+@export
+var Water_Speed = 30
+
 var rng = RandomNumberGenerator.new()
 var water_Recoil_X = rng.randf_range(-30, 30)
 var water_Recoil_Z = rng.randf_range(1, 5)

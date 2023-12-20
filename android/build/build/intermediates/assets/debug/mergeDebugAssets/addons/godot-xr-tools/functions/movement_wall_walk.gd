@@ -2,7 +2,6 @@
 class_name XRToolsMovementWallWalk
 extends XRToolsMovementProvider
 
-
 # Default wall-walk mask of 4:wall-walk
 const DEFAULT_MASK := 0b0000_0000_0000_0000_0000_0000_0000_1000
 
@@ -18,7 +17,6 @@ const DEFAULT_MASK := 0b0000_0000_0000_0000_0000_0000_0000_1000
 
 ## Wall stick strength
 @export var stick_strength : float = 9.8
-
 
 func physics_pre_movement(_delta: float, player_body: XRToolsPlayerBody):
 	# Test for collision with wall under feet

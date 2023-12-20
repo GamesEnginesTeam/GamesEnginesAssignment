@@ -14,9 +14,12 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	print("TRIGGERED LAVA")
 	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, "*", "XRToolsSceneBase")
 	if not scene_base:
 		return
-		
+	
+	print("LOADING SAME SCENE")
+	
 	# Start loading the target scene
 	scene_base.load_scene(target_scene)

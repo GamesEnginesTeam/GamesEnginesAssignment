@@ -7,6 +7,9 @@ extends Node3D
 
 @onready var _controller := XRHelpers.get_xr_controller(self)
 
+@export
+var firerate = 0.05
+
 var firerateTimer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -35,4 +38,4 @@ func _process(delta):
 			root_node.add_child(water)
 			water.transform = watering_can_muzzle.global_transform
 			water.water_shot(_controller)
-			firerateTimer.start(0.1)
+			firerateTimer.start(firerate)
