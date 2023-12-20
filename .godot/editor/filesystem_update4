@@ -27,3 +27,4 @@ res://Materials/water.tres
 res://Models/Lava.tscn
 res://Models/Lava.gd
 res://example/boujie_water_shader/MapEnvironment.tres
+res://Levels/Level2.tscn

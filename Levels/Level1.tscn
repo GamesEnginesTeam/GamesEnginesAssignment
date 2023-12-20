@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dj3h0xq52vqsr"]
+[gd_scene load_steps=30 format=3 uid="uid://dj3h0xq52vqsr"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_4mqnk"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="2_uc4ih"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Players/LeftController.gd" id="5_6yca1"]
 [ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://addons/godot-xr-tools/staging/goal.tscn" id="6_oeee4"]
 [ext_resource type="PackedScene" uid="uid://bu07alt6vkbaq" path="res://addons/godot-xr-tools/hands/model/Hand_Glove_L.gltf" id="6_vw7qo"]
-[ext_resource type="PackedScene" uid="uid://cosf1wl6ytga6" path="res://Models/Lava.tscn" id="7_oihjy"]
+[ext_resource type="Texture2D" uid="uid://qyojpd3blkpg" path="res://textures/lava-magma-with-stones-in-cartoon-style-seamless-pattern-background-eruption-effect-landscape-texture-design-illustration-vector.jpg" id="7_ol2tv"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="7_s7bxy"]
 [ext_resource type="Script" path="res://Players/RightController.gd" id="8_4njgv"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="9_7yga1"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://be025wg6tefx6" path="res://Models/WateringCan.tscn" id="12_oxtqn"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="13_klkgw"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="14_stas2"]
+[ext_resource type="Script" path="res://Models/Lava.gd" id="17_giork"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_psatv"]
 sky_top_color = Color(0.211765, 0.211765, 0.211765, 1)
@@ -48,6 +49,36 @@ jump_max_slope = 45.0
 jump_velocity = 7.0
 bounciness = 0.0
 bounce_threshold = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wk1s8"]
+size = Vector2(20, 20)
+
+[sub_resource type="Gradient" id="Gradient_4lbd0"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tbrtl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jtyxw"]
+color_ramp = SubResource("Gradient_4lbd0")
+noise = SubResource("FastNoiseLite_tbrtl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp81o"]
+albedo_color = Color(1, 0.388235, 0, 1)
+albedo_texture = ExtResource("7_ol2tv")
+emission_enabled = true
+emission = Color(0.654902, 0.152941, 0, 1)
+emission_energy_multiplier = 10.0
+emission_texture = ExtResource("7_ol2tv")
+refraction_enabled = true
+refraction_scale = 1.0
+refraction_texture = SubResource("NoiseTexture2D_jtyxw")
+uv1_scale = Vector3(8, 8, 8)
+uv1_triplanar = true
+disable_receive_shadows = true
+proximity_fade_enabled = true
+distance_fade_mode = 1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_db3l6"]
 
 [node name="Root" type="Node3D"]
 script = ExtResource("1_4mqnk")
@@ -128,7 +159,7 @@ physics = SubResource("Resource_86hmr")
 [node name="Goal" parent="." instance=ExtResource("6_oeee4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 9, -42)
 flowerGoal = 3
-target_scene = "res://MainGame.tscn"
+target_scene = "res://Levels/Level2.tscn"
 
 [node name="LevelName" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 4, 5)
@@ -157,9 +188,18 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(-8, -5, -17)
 
-[node name="MeshInstance3D" parent="." instance=ExtResource("7_oihjy")]
+[node name="MeshInstance3D" type="Area3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -6.72035, 0)
+collision_mask = 4
+script = ExtResource("17_giork")
 target_scene = "res://Levels/Level1.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_wk1s8")
+surface_material_override/0 = SubResource("StandardMaterial3D_xp81o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
+shape = SubResource("WorldBoundaryShape3D_db3l6")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.5, 2.08165e-12)
@@ -184,6 +224,7 @@ light_energy = 10.0
 [connection signal="incrementFlowerCount" from="Dirt/Flower" to="Goal" method="_on_flower_increment_flower_count"]
 [connection signal="incrementFlowerCount" from="Dirt2/Flower" to="Goal" method="_on_flower_increment_flower_count"]
 [connection signal="incrementFlowerCount" from="Dirt3/Flower" to="Goal" method="_on_flower_increment_flower_count"]
+[connection signal="body_entered" from="MeshInstance3D" to="MeshInstance3D" method="_on_body_entered"]
 
 [editable path="Dirt"]
 [editable path="Dirt2"]
