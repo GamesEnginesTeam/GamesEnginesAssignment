@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bqrdjwcxgv0my"]
+[gd_scene load_steps=34 format=3 uid="uid://c688ohifp1dtv"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_e8d0p"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="2_eiqq2"]
@@ -158,7 +158,7 @@ root_node = NodePath("../../..")
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XROrigin3D"]
 top_level = true
 collision_layer = 4
-collision_mask = 31
+collision_mask = 15
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("14_cm34x")

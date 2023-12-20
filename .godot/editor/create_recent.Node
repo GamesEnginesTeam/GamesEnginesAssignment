@@ -1,3 +1,5 @@
+MeshInstance3D
+XRToolsHighlightRing
 FogVolume
 OmniLight3D
 DirectionalLight3D
@@ -9,7 +11,4 @@ StaticBody3D
 CollisionShape3D
 Area3D
 WaterMaterialDesigner
-MeshInstance3D
 GPUParticles3D
-Label3D
-RichTextLabel

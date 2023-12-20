@@ -112,7 +112,6 @@ current = true
 environment = SubResource("Environment_rdjm5")
 attributes = SubResource("CameraAttributesPractical_y1rnk")
 doppler_tracking = 1
-current = true
 fov = 110.0
 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("5_ui6gx")]

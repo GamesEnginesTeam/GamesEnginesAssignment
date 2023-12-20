@@ -20,3 +20,4 @@ res://Levels/Level2.tscn
 res://addons/godot-xr-tools/functions/movement_wall_walk.gd
 res://Levels/Level4.tscn
 res://Models/Lava.gd
+res://addons/grappling_hook_3d/example/main.tscn

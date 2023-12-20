@@ -80,7 +80,7 @@ distance_fade_mode = 1
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_db3l6"]
 
-[node name="Root" type="Node3D"]
+[node name="Root3" type="Node3D"]
 script = ExtResource("1_4mqnk")
 
 [node name="FlowerSpawnPoint" type="Node3D" parent="."]

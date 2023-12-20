@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://utkdclutq7jr"]
+[gd_scene load_steps=28 format=3 uid="uid://cro5e0brohmff"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_jg3n6"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="2_25bh6"]
@@ -65,7 +65,7 @@ disable_receive_shadows = true
 proximity_fade_enabled = true
 distance_fade_mode = 1
 
-[node name="Root" type="Node3D"]
+[node name="Root2" type="Node3D"]
 script = ExtResource("1_jg3n6")
 
 [node name="FlowerSpawnPoint" type="Node3D" parent="."]
